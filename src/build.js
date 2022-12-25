@@ -38,7 +38,7 @@ const f = async () => {
       gotStream(artifactsUrl),
       createWriteStream(zipPath)
     )
-    await pipelineStatus(pipelineUrl)
+    // await pipelineStatus(pipelineUrl)
   } catch ({ message }) {
     console.error(JSON.stringify({
       error: message,
