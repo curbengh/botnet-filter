@@ -32,7 +32,7 @@ mkdir "tmp/"
 cd "tmp/"
 
 ## Prepare datasets
-# curl "https://feodotracker.abuse.ch/downloads/ipblocklist.csv" -o "feodo.csv"
+curl "https://feodotracker.abuse.ch/downloads/ipblocklist.csv" -o "feodo.csv"
 
 ## Parse IPs
 cat "feodo.csv" | \
