@@ -50,7 +50,7 @@ CURRENT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 COMMENT_UBO="! Title: Botnet IP Blocklist\n"
 COMMENT_UBO="$COMMENT_UBO! Updated: $CURRENT_TIME\n"
 COMMENT_UBO="$COMMENT_UBO! Expires: 1 day (update frequency)\n"
-COMMENT_UBO="$COMMENT_UBO! Homepage: https://gitlab.com/malware-filter/botnet-filter\m"
+COMMENT_UBO="$COMMENT_UBO! Homepage: https://gitlab.com/malware-filter/botnet-filter\n"
 COMMENT_UBO="$COMMENT_UBO! License: https://gitlab.com/malware-filter/botnet-filter#license\n"
 COMMENT_UBO="$COMMENT_UBO! Source: https://feodotracker.abuse.ch/blocklist/"
 
