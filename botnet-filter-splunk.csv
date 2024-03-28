@@ -1,0 +1,38 @@
+# Title: Botnet IP Splunk Lookup
+# Updated: 2024-03-28T12:07:30Z
+# Expires: 1 day (update frequency)
+# Homepage: https://gitlab.com/malware-filter/botnet-filter
+# License: https://gitlab.com/malware-filter/botnet-filter#license
+# Source: https://feodotracker.abuse.ch/blocklist/
+"ip","message","updated"
+"103.82.243.5","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"104.129.55.105","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"104.129.55.106","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"154.12.233.66","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"154.12.236.248","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"154.12.248.41","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"154.53.55.165","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"158.220.95.214","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"158.220.95.215","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"172.232.208.90","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"178.18.246.136","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"192.248.159.76","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"192.9.135.73","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"194.233.91.144","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"198.38.94.213","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"209.126.86.48","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"213.199.41.33","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"23.226.138.143","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"23.226.138.161","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"37.60.242.85","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"64.23.199.206","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"65.20.73.169","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"84.247.157.112","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"84.46.240.42","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"85.239.243.155","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"86.38.225.105","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"86.38.225.106","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"89.117.23.185","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"89.117.23.186","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"94.72.104.77","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
+"94.72.104.80","botnet-filter botnet IP detected","2024-03-28T12:07:30Z"
