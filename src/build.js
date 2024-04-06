@@ -52,7 +52,7 @@ const f = async () => {
 
     try {
       await pipeline(
-        Readable.fromWeb((await fetch(artifactsUrl)).body),
+        Readable.fromWeb((await fetch(ghMirror)).body),
         createWriteStream(zipPath)
       )
     } catch ({ message }) {
