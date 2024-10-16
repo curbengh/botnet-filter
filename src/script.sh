@@ -108,7 +108,6 @@ sed -e "s/^/||/g" -e "s/$/\$document/g" | \
 sed "1i $COMMENT_UBO" | \
 sed "1s/Blocklist/Blocklist (Vivaldi)/" > "../public/botnet-filter-vivaldi.txt"
 
-
 ## Hash comment
 # awk + head is a workaround for sed prepend
 COMMENT=$(printf "$COMMENT_UBO" | sed "s/^!/#/g" | awk '{printf "%s\\n", $0}' | head -c -2)
@@ -144,6 +143,17 @@ done < "feodo-ip.txt"
 
 set -x
 
+
+# upstream may provide empty data
+if [ ! -s "feodo-ip.txt" ]; then
+  printf "$COMMENT_UBO\n! END 0 entries\n" > "../public/botnet-filter.txt"
+  printf "$COMMENT_UBO\n! END 0 entries\n" > "../public/botnet-filter-agh.txt"
+  printf "$COMMENT_UBO\n! END 0 entries\n" > "../public/botnet-filter-ag.txt"
+  printf "$COMMENT_UBO\n! END 0 entries\n" > "../public/botnet-filter-vivaldi.txt"
+  printf "$COMMENT\n# END 0 entries\n" > "../public/botnet-filter-dnscrypt-blocked-ips.txt"
+  echo "# END 0 entries" > "../public/botnet-filter-suricata.rules"
+  echo "# END 0 entries" > "../public/botnet-filter-splunk.csv"
+fi
 
 sed -i "1i $COMMENT" "../public/botnet-filter-suricata.rules"
 sed -i "1s/Blocklist/Suricata Ruleset/" "../public/botnet-filter-suricata.rules"
