@@ -1,0 +1,7 @@
+# Title: Botnet IP Suricata Ruleset
+# Updated: 2024-10-18T00:20:03Z
+# Expires: 1 day (update frequency)
+# Homepage: https://gitlab.com/malware-filter/botnet-filter
+# License: https://gitlab.com/malware-filter/botnet-filter#license
+# Source: https://feodotracker.abuse.ch/blocklist/
+alert ip $HOME_NET any -> [107.191.57.63] any (msg:"botnet-filter botnet IP detected"; reference:url, feodotracker.abuse.ch/browse/host/107.191.57.63/; classtype:trojan-activity; sid:600000001; rev:1;)
