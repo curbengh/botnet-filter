@@ -133,6 +133,7 @@ All filters are also available as gzip- and brotli-compressed.
 
 - Gzip: https://malware-filter.gitlab.io/malware-filter/botnet-filter.txt.gz
 - Brotli: https://malware-filter.gitlab.io/malware-filter/botnet-filter.txt.br
+- Zstd: https://malware-filter.gitlab.io/malware-filter/botnet-filter.txt.zst
 
 ## Issues
 
