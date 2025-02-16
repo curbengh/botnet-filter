@@ -114,10 +114,17 @@ COMMENT=$(printf "$COMMENT_UBO" | sed "s/^!/#/g" | awk '{printf "%s\\n", $0}' | 
 
 
 ## dnscrypt-proxy blocklists
-# name-based
+# IP-based
 cat "feodo-ip.txt" | \
 sed "1i $COMMENT" | \
-sed "1s/Domains/IPs/" > "../public/botnet-filter-dnscrypt-blocked-ips.txt"
+sed "1s/Blocklist/Blocklist (Dnscrypt-proxy)/" > "../public/botnet-filter-dnscrypt-blocked-ips.txt"
+
+
+## htaaccess
+cat "feodo-ip.txt" | \
+sed "s/^/deny from /g" | \
+sed "1i $COMMENT" | \
+sed "1s/Blocklist/Blocklist (htaccess)/" > "../public/botnet-filter-htaccess.txt"
 
 
 ## Temporarily disable command print

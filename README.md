@@ -10,6 +10,7 @@
   - [Snort3](#snort3)
   - [Suricata](#suricata)
   - [Splunk](#splunk)
+  - [htaccess](#htaccess)
 - [Compressed version](#compressed-version)
 - [Reporting issues](#issues)
 - [FAQ and Guides](#faq-and-guides)
@@ -29,6 +30,7 @@ This blocklist is only useful as a last line of defence _after_ being infected. 
 | [dnscrypt-proxy](#dnscrypt-proxy)                           | [link](https://malware-filter.gitlab.io/malware-filter/botnet-filter-dnscrypt-blocked-ips.txt) | [link](https://curbengh.github.io/malware-filter/botnet-filter-dnscrypt-blocked-ips.txt) | [link](https://curbengh.github.io/botnet-filter/botnet-filter-dnscrypt-blocked-ips.txt) | [link](https://malware-filter.gitlab.io/botnet-filter/botnet-filter-dnscrypt-blocked-ips.txt) | [link](https://malware-filter.pages.dev/botnet-filter-dnscrypt-blocked-ips.txt) | [link](https://botnet-filter.pages.dev/botnet-filter-dnscrypt-blocked-ips.txt) |
 | [Snort2](#snort2), [Snort3](#snort3), [Suricata](#suricata) | [link](https://malware-filter.gitlab.io/malware-filter/botnet-filter-suricata.rules)           | [link](https://curbengh.github.io/malware-filter/botnet-filter-suricata.rules)           | [link](https://curbengh.github.io/botnet-filter/botnet-filter-suricata.rules)           | [link](https://malware-filter.gitlab.io/botnet-filter/botnet-filter-suricata.rules)           | [link](https://malware-filter.pages.dev/botnet-filter-suricata.rules)           | [link](https://botnet-filter.pages.dev/botnet-filter-suricata.rules)           |
 | [Splunk](#splunk)                                           | [link](https://malware-filter.gitlab.io/malware-filter/botnet-filter-splunk.csv)               | [link](https://curbengh.github.io/malware-filter/botnet-filter-splunk.csv)               | [link](https://curbengh.github.io/botnet-filter/botnet-filter-splunk.csv)               | [link](https://malware-filter.gitlab.io/botnet-filter/botnet-filter-splunk.csv)               | [link](https://malware-filter.pages.dev/botnet-filter-splunk.csv)               | [link](https://botnet-filter.pages.dev/botnet-filter-splunk.csv)               |
+| [Apache](#htaccess)                                         | [link](https://malware-filter.gitlab.io/malware-filter/botnet-filter-htaccess.txt)               | [link](https://curbengh.github.io/malware-filter/botnet-filter-htaccess.txt)               | [link](https://curbengh.github.io/botnet-filter/botnet-filter-htaccess.txt)               | [link](https://malware-filter.gitlab.io/botnet-filter/botnet-filter-htaccess.txt)               | [link](https://malware-filter.pages.dev/botnet-filter-htaccess.txt)               | [link](https://botnet-filter.pages.dev/botnet-filter-htaccess.txt)               |
 
 For other programs, see [Compatibility](https://gitlab.com/malware-filter/malware-filter/wikis/compatibility) page in the wiki.
 
@@ -126,6 +128,10 @@ Columns:
 | ip      | message                          | updated              |
 | ------- | -------------------------------- | -------------------- |
 | 1.2.3.4 | botnet-filter botnet IP detected | 2022-12-21T12:34:56Z |
+
+## htaccess
+
+In Apache configuration, add `AllowOverride All` to each `<Directory>`, then add .htaccess to each site directory.
 
 ## Compressed version
 
