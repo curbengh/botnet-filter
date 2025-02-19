@@ -1,0 +1,10 @@
+# Title: Botnet IP Splunk Lookup
+# Updated: 2025-02-19T12:08:08Z
+# Expires: 1 day (update frequency)
+# Homepage: https://gitlab.com/malware-filter/botnet-filter
+# License: https://gitlab.com/malware-filter/botnet-filter#license
+# Source: https://feodotracker.abuse.ch/blocklist/
+"ip","message","updated"
+"172.232.58.59","botnet-filter botnet IP detected","2025-02-19T12:08:08Z"
+"5.253.59.162","botnet-filter botnet IP detected","2025-02-19T12:08:08Z"
+"79.137.13.24","botnet-filter botnet IP detected","2025-02-19T12:08:08Z"
