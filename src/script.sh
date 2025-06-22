@@ -151,19 +151,8 @@ set +x
 rm "../public/botnet-filter-suricata.rules" \
   "../public/botnet-filter-splunk.csv"
 
-SID="600000001"
-while read line; do
-  IP=$(printf "$line" | sed -r 's/\[|\]/"/g')
-  SR_RULE="alert ip \$HOME_NET any -> [$IP] any (msg:\"botnet-filter botnet IP detected\"; classtype:trojan-activity; sid:$SID; rev:1;)"
-
-  IP=$(printf "$line" | sed -r 's/\[|\]//g')
-  SP_RULE="\"$IP\",\"botnet-filter botnet IP detected\",\"$CURRENT_TIME\""
-
-  echo "$SR_RULE" >> "../public/botnet-filter-suricata.rules"
-  echo "$SP_RULE" >> "../public/botnet-filter-splunk.csv"
-
-  SID=$(( $SID + 1 ))
-done < "ip.txt"
+export CURRENT_TIME
+node "../src/ids.js"
 
 
 set -x
