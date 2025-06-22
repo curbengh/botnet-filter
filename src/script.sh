@@ -79,7 +79,7 @@ dos2unix | \
 # Remove comment
 sed "/^#/d" | \
 # Remove inline comment
-sed -r "s/\s.+//g" | \
+sed -r "s/\s.+//" | \
 # Remove blank lines
 sed "/^$/d" | \
 # Wrap ipv6 in bracket
@@ -104,27 +104,27 @@ sed "1i $COMMENT_UBO" > "../public/botnet-filter.txt"
 
 # Adguard Home
 cat "ip.txt" | \
-sed -e "s/^/||/g" -e "s/$/^/g" | \
+sed -e "s/^/||/" -e "s/$/^/" | \
 sed "1i $COMMENT_UBO" | \
 sed "1s/Blocklist/Blocklist (AdGuard Home)/" > "../public/botnet-filter-agh.txt"
 
 
 # Adguard browser extension
 cat "ip.txt" | \
-sed -e "s/^/||/g" -e "s/$/\$all/g" | \
+sed -e "s/^/||/" -e "s/$/\$all/" | \
 sed "1i $COMMENT_UBO" | \
 sed "1s/Blocklist/Blocklist (AdGuard)/" > "../public/botnet-filter-ag.txt"
 
 
 # Vivaldi
 cat "ip.txt" | \
-sed -e "s/^/||/g" -e "s/$/\$document/g" | \
+sed -e "s/^/||/" -e "s/$/\$document/" | \
 sed "1i $COMMENT_UBO" | \
 sed "1s/Blocklist/Blocklist (Vivaldi)/" > "../public/botnet-filter-vivaldi.txt"
 
 ## Hash comment
 # awk + head is a workaround for sed prepend
-COMMENT=$(printf "$COMMENT_UBO" | sed "s/^!/#/g" | awk '{printf "%s\\n", $0}' | head -c -2)
+COMMENT=$(printf "$COMMENT_UBO" | sed "s/^!/#/" | awk '{printf "%s\\n", $0}' | head -c -2)
 
 
 ## dnscrypt-proxy blocklists
@@ -138,7 +138,7 @@ sed "1s/Blocklist/Blocklist (Dnscrypt-proxy)/" > "../public/botnet-filter-dnscry
 ## htaaccess
 cat "ip.txt" | \
 sed -r "s/\[|\]//g" | \
-sed "s/^/deny from /g" | \
+sed "s/^/deny from /" | \
 sed "1i $COMMENT" | \
 sed "1s/Blocklist/Blocklist (htaccess)/" > "../public/botnet-filter-htaccess.txt"
 
