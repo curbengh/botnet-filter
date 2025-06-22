@@ -55,6 +55,7 @@ fi
 
 
 ## Create a temporary working folder
+rm "tmp/"
 mkdir "tmp/"
 cd "tmp/"
 
