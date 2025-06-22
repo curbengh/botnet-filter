@@ -59,51 +59,65 @@ mkdir "tmp/"
 cd "tmp/"
 
 ## Prepare datasets
-curl "https://feodotracker.abuse.ch/downloads/ipblocklist.csv" -o "feodo.csv"
+curl "https://feodotracker.abuse.ch/downloads/ipblocklist.txt" -o "feodo.txt" || [ $? = 1 ]
+curl "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt" -o "ipsum-level3.txt" || [ $? = 1 ]
+curl "https://www.binarydefense.com/banlist.txt" -o "binarydefense.txt" || [ $? = 1 ]
+curl "https://rules.emergingthreats.net/blockrules/compromised-ips.txt" -o "et.txt" || [ $? = 1 ]
+curl "https://blocklist.greensnow.co/greensnow.txt" -o "greensnow.txt" || [ $? = 1 ]
+curl "https://threatview.io/Downloads/IP-High-Confidence-Feed.txt" -o "threatview.txt" || [ $? = 1 ]
+# missing intermediate cert
+curl "https://myip.ms/files/blacklist/general/latest_blacklist.txt" --cacert "../src/globalsign-sub.pem" -o "myip.txt" || [ $? = 1 ]
+curl "https://iplists.firehol.org/files/firehol_webclient.netset" -o "firehol-web.txt" || [ $? = 1 ]
+
+# ensure file exists
+touch "feodo.txt" "ipsum-level3.txt" "binarydefense.txt" "et.txt" "greensnow.txt" "threatview.txt" "myip.txt" "firehol-web.txt"
+
 
 ## Parse IPs
-cat "feodo.csv" | \
+cat "feodo.txt" "ipsum-level3.txt" "binarydefense.txt" "et.txt" "greensnow.txt" "threatview.txt" "myip.txt" "firehol-web.txt" | \
 dos2unix | \
 # Remove comment
 sed "/^#/d" | \
-# dst_ip column
-cut -f 4 -d '"' | \
-# Remove header row
-tail -n +2 | \
-sort -u > "feodo-ip.txt"
+# Remove inline comment
+sed -r "s/\s.+//g" | \
+# Remove blank lines
+sed "/^$/d" | \
+# Wrap ipv6 in bracket
+sed -r "s/(.+:.+)/[\1]/" | \
+sort -u > "ip.txt"
 
 ## Merge malware domains and URLs
 CURRENT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-COMMENT_UBO="! Title: Botnet IP Blocklist\n"
+COMMENT_UBO="! Title: Malicious IP Blocklist\n"
 COMMENT_UBO="$COMMENT_UBO! Updated: $CURRENT_TIME\n"
-COMMENT_UBO="$COMMENT_UBO! Expires: 1 day (update frequency)\n"
+COMMENT_UBO="$COMMENT_UBO! Expires: 12 hours (update frequency)\n"
 COMMENT_UBO="$COMMENT_UBO! Homepage: https://gitlab.com/malware-filter/botnet-filter\n"
 COMMENT_UBO="$COMMENT_UBO! License: https://gitlab.com/malware-filter/botnet-filter#license\n"
-COMMENT_UBO="$COMMENT_UBO! Source: https://feodotracker.abuse.ch/blocklist/"
+COMMENT_UBO="$COMMENT_UBO! Source: feodotracker.abuse.ch, stamparm/ipsum, binarydefense, Proofpoint emergingthreats, greensnow, threatview, myip.ms, firehol"
 
 mkdir "../public/"
 
 # uBlock Origin
-cat "feodo-ip.txt" | \
+cat "ip.txt" | \
 sed "1i $COMMENT_UBO" > "../public/botnet-filter.txt"
 
 
 # Adguard Home
-cat "feodo-ip.txt" | \
+cat "ip.txt" | \
 sed -e "s/^/||/g" -e "s/$/^/g" | \
 sed "1i $COMMENT_UBO" | \
 sed "1s/Blocklist/Blocklist (AdGuard Home)/" > "../public/botnet-filter-agh.txt"
 
 
 # Adguard browser extension
-cat "feodo-ip.txt" | \
+cat "ip.txt" | \
 sed -e "s/^/||/g" -e "s/$/\$all/g" | \
 sed "1i $COMMENT_UBO" | \
 sed "1s/Blocklist/Blocklist (AdGuard)/" > "../public/botnet-filter-ag.txt"
 
 
 # Vivaldi
-cat "feodo-ip.txt" | \
+cat "ip.txt" | \
 sed -e "s/^/||/g" -e "s/$/\$document/g" | \
 sed "1i $COMMENT_UBO" | \
 sed "1s/Blocklist/Blocklist (Vivaldi)/" > "../public/botnet-filter-vivaldi.txt"
@@ -115,13 +129,15 @@ COMMENT=$(printf "$COMMENT_UBO" | sed "s/^!/#/g" | awk '{printf "%s\\n", $0}' | 
 
 ## dnscrypt-proxy blocklists
 # IP-based
-cat "feodo-ip.txt" | \
+cat "ip.txt" | \
+sed -r "s/\[|\]//g" | \
 sed "1i $COMMENT" | \
 sed "1s/Blocklist/Blocklist (Dnscrypt-proxy)/" > "../public/botnet-filter-dnscrypt-blocked-ips.txt"
 
 
 ## htaaccess
-cat "feodo-ip.txt" | \
+cat "ip.txt" | \
+sed -r "s/\[|\]//g" | \
 sed "s/^/deny from /g" | \
 sed "1i $COMMENT" | \
 sed "1s/Blocklist/Blocklist (htaccess)/" > "../public/botnet-filter-htaccess.txt"
@@ -136,31 +152,22 @@ rm "../public/botnet-filter-suricata.rules" \
   "../public/botnet-filter-splunk.csv"
 
 SID="600000001"
-while read IP; do
-  SR_RULE="alert ip \$HOME_NET any -> [$IP] any (msg:\"botnet-filter botnet IP detected\"; reference:url, feodotracker.abuse.ch/browse/host/$IP/; classtype:trojan-activity; sid:$SID; rev:1;)"
+while read line; do
+  IP=$(printf "$line" | sed -r 's/\[|\]/"/g')
+  SR_RULE="alert ip \$HOME_NET any -> [$IP] any (msg:\"botnet-filter botnet IP detected\"; classtype:trojan-activity; sid:$SID; rev:1;)"
 
+  IP=$(printf "$line" | sed -r 's/\[|\]//g')
   SP_RULE="\"$IP\",\"botnet-filter botnet IP detected\",\"$CURRENT_TIME\""
 
   echo "$SR_RULE" >> "../public/botnet-filter-suricata.rules"
   echo "$SP_RULE" >> "../public/botnet-filter-splunk.csv"
 
   SID=$(( $SID + 1 ))
-done < "feodo-ip.txt"
+done < "ip.txt"
 
 
 set -x
 
-
-# upstream may provide empty data
-if [ ! -s "feodo-ip.txt" ]; then
-  printf "$COMMENT_UBO\n! END 0 entries\n" > "../public/botnet-filter.txt"
-  printf "$COMMENT_UBO\n! END 0 entries\n" > "../public/botnet-filter-agh.txt"
-  printf "$COMMENT_UBO\n! END 0 entries\n" > "../public/botnet-filter-ag.txt"
-  printf "$COMMENT_UBO\n! END 0 entries\n" > "../public/botnet-filter-vivaldi.txt"
-  printf "$COMMENT\n# END 0 entries\n" > "../public/botnet-filter-dnscrypt-blocked-ips.txt"
-  echo "# END 0 entries" > "../public/botnet-filter-suricata.rules"
-  echo "# END 0 entries" > "../public/botnet-filter-splunk.csv"
-fi
 
 sed -i "1i $COMMENT" "../public/botnet-filter-suricata.rules"
 sed -i "1s/Blocklist/Suricata Ruleset/" "../public/botnet-filter-suricata.rules"

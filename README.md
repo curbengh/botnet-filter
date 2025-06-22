@@ -17,9 +17,17 @@
 - [CI Variables](#ci-variables)
 - [License](#license)
 
-A blocklist of botnet IPs, based on the **Botnet C2 IOCs** of Abuse.ch [Feodo Tracker](https://feodotracker.abuse.ch/blocklist/#iocs), including online and offline entries. Blocklist is updated twice a day.
+A blocklist of malicious IPs compiled from these sources (discovered through [banip](https://github.com/openwrt/packages/blob/master/net/banip/files/banip.feeds)):
+  - [Feodo Tracker](https://feodotracker.abuse.ch/downloads/ipblocklist.txt)
+  - [IPsum Level 3](https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt)
+  - [Binary Defense](https://www.binarydefense.com/banlist.txt)
+  - [Proofpoint Emerging Threats](https://rules.emergingthreats.net/blockrules/compromised-ips.txt)
+  - [GreenSnow](https://blocklist.greensnow.co/greensnow.txt)
+  - [Threatview.io](https://threatview.io/Downloads/IP-High-Confidence-Feed.txt)
+  - [Myip.ms](https://myip.ms/files/blacklist/general/latest_blacklist.txt)
+  - [FireHOL](https://iplists.firehol.org/files/firehol_webclient.netset)
 
-This blocklist is only useful as a last line of defence _after_ being infected. To avoid infection in the first place, consider using [urlhaus-filter](https://gitlab.com/malware-filter/urlhaus-filter).
+Blocklist is updated twice a day.
 
 | Client | mirror 1 | mirror 2 | mirror 3 | mirror 4 | mirror 5 | mirror 6 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -164,5 +172,23 @@ https://gitlab.com/curben/blog#repository-mirrors
 [Creative Commons Zero v1.0 Universal](LICENSE-CC0.md) and [MIT License](LICENSE)
 
 [Feodo Tracker](https://feodotracker.abuse.ch/): [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
+
+[IPsum Level 3](https://github.com/stamparm): [Unlicense](https://github.com/stamparm/ipsum/blob/master/LICENSE)
+
+## Credits
+
+[Binary Defense](https://www.binarydefense.com/)
+
+[Proofpoint Emerging Threats](https://www.proofpoint.com/us/products/advanced-threat-protection/et-intelligence)
+
+[GreenSnow](https://greensnow.co/)
+
+[Threatview.io](https://threatview.io/)
+
+[Myip.ms](https://myip.ms/files/blacklist/general/latest_blacklist.txt)
+
+[FireHOL](https://iplists.firehol.org/files/firehol_webclient.netset)
+
+[banip](https://github.com/openwrt/packages/blob/master/net/banip/files/)
 
 This repository is not endorsed by Abuse.ch.
