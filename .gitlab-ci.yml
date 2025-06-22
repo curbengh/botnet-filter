@@ -1,4 +1,4 @@
-image: oven/bun:alpine
+image: node:lts-alpine
 
 include:
   - template: Security/Secret-Detection.gitlab-ci.yml
@@ -62,7 +62,7 @@ netlify:
     - build_job
 
   before_script:
-    - bun install -g netlify-cli
+    - npm install netlify-cli -g
     - netlify --telemetry-disable
 
   script:
