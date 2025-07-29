@@ -51,8 +51,6 @@ Check out my other filters:
 
 ## IP-based
 
-I highly recommend to use the upstream version (update every 5 minutes): [online+offline](https://feodotracker.abuse.ch/downloads/ipblocklist.txt) or [online only](https://feodotracker.abuse.ch/downloads/ipblocklist_recommended.txt).
-
 Import the link into uBO's filter list to subscribe.
 
 </details>
@@ -82,9 +80,7 @@ Configure dnscrypt-proxy to use the blocklist:
 
 ## Snort2
 
-I highly recommend to use the [upstream version](https://feodotracker.abuse.ch/blocklist/#ip-ids) which is updated every 5 minutes.
-
-Save the ruleset to "/etc/snort/rules/botnet-filter-suricata.rules". Refer to this [guide](https://gitlab.com/malware-filter/malware-filter/wikis/update-filter) for auto-update. Snort 2, 3 and Suricata use the same ruleset for this blocklist.
+Save the ruleset to "/etc/snort/rules/botnet-filter-suricata.rules". Refer to this [guide](https://gitlab.com/malware-filter/malware-filter/wikis/update-filter) for auto-update.
 
 Configure Snort to use the ruleset:
 
@@ -92,9 +88,7 @@ Configure Snort to use the ruleset:
 
 ## Snort3
 
-I highly recommend to use the [upstream version](https://feodotracker.abuse.ch/blocklist/#ip-ids) which is updated every 5 minutes.
-
-Save the ruleset to "/etc/snort/rules/botnet-filter-suricata.rules". Refer to this [guide](https://gitlab.com/malware-filter/malware-filter/wikis/update-filter) for auto-update. Snort 2, 3 and Suricata use the same ruleset for this blocklist.
+Save the ruleset to "/etc/snort/rules/botnet-filter-suricata.rules". Refer to this [guide](https://gitlab.com/malware-filter/malware-filter/wikis/update-filter) for auto-update.
 
 Configure Snort to use the ruleset:
 
@@ -109,9 +103,7 @@ ips =
 
 ## Suricata
 
-I highly recommend to use the [upstream version](https://feodotracker.abuse.ch/blocklist/#ip-ids) which is updated every 5 minutes.
-
-Save the ruleset to "/etc/suricata/rules/botnet-filter-suricata.rules". Refer to this [guide](https://gitlab.com/malware-filter/malware-filter/wikis/update-filter) for auto-update. Snort 2, 3 and Suricata use the same ruleset for this blocklist.
+Save the ruleset to "/etc/suricata/rules/botnet-filter-suricata.rules". Refer to this [guide](https://gitlab.com/malware-filter/malware-filter/wikis/update-filter) for auto-update.
 
 Configure Suricata to use the ruleset:
 
@@ -150,7 +142,7 @@ All filters are also available as gzip- and brotli-compressed.
 
 ## Issues
 
-This blocklist **only** accepts new malicious IPs from [Feodo Tracker](https://feodotracker.abuse.ch/).
+This blocklist **only** accepts new malicious IPs from upstream [sources](#credits).
 
 ## FAQ and Guides
 
