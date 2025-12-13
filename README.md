@@ -23,7 +23,6 @@ A blocklist of malicious IPs compiled from these sources (discovered through [ba
   - [Binary Defense](https://www.binarydefense.com/banlist.txt)
   - [Proofpoint Emerging Threats](https://rules.emergingthreats.net/blockrules/compromised-ips.txt)
   - [GreenSnow](https://blocklist.greensnow.co/greensnow.txt)
-  - [Threatview.io](https://threatview.io/Downloads/IP-High-Confidence-Feed.txt)
   - [Myip.ms](https://myip.ms/files/blacklist/general/latest_blacklist.txt)
   - [FireHOL](https://iplists.firehol.org/files/firehol_webclient.netset)
 
@@ -174,8 +173,6 @@ https://gitlab.com/curben/blog#repository-mirrors
 [Proofpoint Emerging Threats](https://www.proofpoint.com/us/products/advanced-threat-protection/et-intelligence)
 
 [GreenSnow](https://greensnow.co/)
-
-[Threatview.io](https://threatview.io/)
 
 [Myip.ms](https://myip.ms/files/blacklist/general/latest_blacklist.txt)
 

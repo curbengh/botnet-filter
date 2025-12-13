@@ -65,17 +65,16 @@ curl "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt" -o "
 curl "https://www.binarydefense.com/banlist.txt" -o "binarydefense.txt" || [ $? = 1 ]
 curl "https://rules.emergingthreats.net/blockrules/compromised-ips.txt" -o "et.txt" || [ $? = 1 ]
 curl "https://blocklist.greensnow.co/greensnow.txt" -o "greensnow.txt" || [ $? = 1 ]
-curl "https://threatview.io/Downloads/IP-High-Confidence-Feed.txt" -o "threatview.txt" || [ $? = 1 ]
 # missing intermediate cert
 curl "https://myip.ms/files/blacklist/general/latest_blacklist.txt" --cacert "../src/globalsign-sub.pem" -o "myip.txt" || [ $? = 1 ]
 curl "https://iplists.firehol.org/files/firehol_webclient.netset" -o "firehol-web.txt" || [ $? = 1 ]
 
 # ensure file exists
-touch "feodo.txt" "ipsum-level3.txt" "binarydefense.txt" "et.txt" "greensnow.txt" "threatview.txt" "myip.txt" "firehol-web.txt"
+touch "feodo.txt" "ipsum-level3.txt" "binarydefense.txt" "et.txt" "greensnow.txt" "myip.txt" "firehol-web.txt"
 
 
 ## Parse IPs
-cat "feodo.txt" "ipsum-level3.txt" "binarydefense.txt" "et.txt" "greensnow.txt" "threatview.txt" "myip.txt" "firehol-web.txt" | \
+cat "feodo.txt" "ipsum-level3.txt" "binarydefense.txt" "et.txt" "greensnow.txt" "myip.txt" "firehol-web.txt" | \
 dos2unix | \
 # Remove comment
 sed "/^#/d" | \
@@ -94,7 +93,7 @@ COMMENT_UBO="$COMMENT_UBO! Updated: $CURRENT_TIME\n"
 COMMENT_UBO="$COMMENT_UBO! Expires: 12 hours (update frequency)\n"
 COMMENT_UBO="$COMMENT_UBO! Homepage: https://gitlab.com/malware-filter/botnet-filter\n"
 COMMENT_UBO="$COMMENT_UBO! License: https://gitlab.com/malware-filter/botnet-filter#license\n"
-COMMENT_UBO="$COMMENT_UBO! Source: feodotracker.abuse.ch, stamparm/ipsum, binarydefense, Proofpoint emergingthreats, greensnow, threatview, myip.ms, firehol"
+COMMENT_UBO="$COMMENT_UBO! Source: feodotracker.abuse.ch, stamparm/ipsum, binarydefense, Proofpoint emergingthreats, greensnow, myip.ms, firehol"
 
 mkdir "../public/"
 
