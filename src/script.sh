@@ -66,8 +66,7 @@ curl "https://www.binarydefense.com/banlist.txt" -o "binarydefense.txt" || [ $? 
 curl "https://rules.emergingthreats.net/blockrules/compromised-ips.txt" -o "et.txt" || [ $? = 1 ]
 curl "https://blocklist.greensnow.co/greensnow.txt" -o "greensnow.txt" || [ $? = 1 ]
 curl "https://threatview.io/Downloads/IP-High-Confidence-Feed.txt" -o "threatview.txt" || [ $? = 1 ]
-# missing intermediate cert
-curl "https://myip.ms/files/blacklist/general/latest_blacklist.txt" --cacert "../src/globalsign-sub.pem" -o "myip.txt" || [ $? = 1 ]
+curl "https://myip.ms/files/blacklist/general/latest_blacklist.txt" -o "myip.txt" || [ $? = 1 ]
 curl "https://iplists.firehol.org/files/firehol_webclient.netset" -o "firehol-web.txt" || [ $? = 1 ]
 
 # ensure file exists
