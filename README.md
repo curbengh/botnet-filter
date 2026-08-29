@@ -26,6 +26,7 @@ A blocklist of malicious IPs compiled from these sources (discovered through [ba
   - [Threatview.io](https://threatview.io/Downloads/IP-High-Confidence-Feed.txt)
   - [Myip.ms](https://myip.ms/files/blacklist/general/latest_blacklist.txt)
   - [FireHOL](https://iplists.firehol.org/files/firehol_webclient.netset)
+  - [ZEROF IPEx DBL](https://github.com/ZEROF/ipextractor)
 
 Blocklist is updated twice a day.
 
@@ -165,7 +166,9 @@ https://gitlab.com/curben/blog#repository-mirrors
 
 [Feodo Tracker](https://feodotracker.abuse.ch/): [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
 
-[IPsum Level 3](https://github.com/stamparm): [Unlicense](https://github.com/stamparm/ipsum/blob/master/LICENSE)
+[IPsum](https://github.com/stamparm): [Unlicense](https://github.com/stamparm/ipsum/blob/master/LICENSE)
+
+[IPEx DBL](https://github.com/ZEROF/ipextractor): [Apache](https://github.com/ZEROF/ipextractor/blob/main/LICENSE)
 
 ## Credits
 
@@ -177,10 +180,10 @@ https://gitlab.com/curben/blog#repository-mirrors
 
 [Threatview.io](https://threatview.io/)
 
-[Myip.ms](https://myip.ms/files/blacklist/general/latest_blacklist.txt)
+[Myip.ms](https://myip.ms/)
 
-[FireHOL](https://iplists.firehol.org/files/firehol_webclient.netset)
+[FireHOL](https://iplists.firehol.org/)
 
-[banip](https://github.com/openwrt/packages/blob/master/net/banip/files/)
+[dibdot banip](https://github.com/openwrt/packages/blob/master/net/banip/files/)
 
-This repository is not endorsed by Abuse.ch.
+This repository is not endorsed by any of the upstream sources.
